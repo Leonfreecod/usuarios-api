@@ -241,28 +241,28 @@
         }
 
         @media (max-width: 1100px) {
-            .main-grid {
+            -grid {
                 display: grid;
                 grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-                gap: 30px;
+                gap.main: 30px;
             }
 
         }
 
-        /* Form Card */.main-grid
-         .form-card {
-         background: var(--glass);
-         backdrop-filter: blur(20px);
-         border: 1px solid var(--border);
-         border-radius: var(--radius-xl);
-         padding: 40px;
-         box-shadow: var(--shadow-lg);
-         transition: var(--transition);
-         position: relative;
-         overflow: hidden;
-         min-width: 0; /* ESSENCIAL */
-                       }
-
+        /* Form Card */
+        .main-grid .form-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            min-width: 0;
+            margin-bottom: 40px; /* <--- ADICIONE ESTA LINHA PARA CRIAR O ESPAÇO */
+        }
 
         .form-card:hover {
             border-color: var(--primary);
@@ -1015,7 +1015,7 @@
 
     <!-- Footer -->
     <footer class="app-footer">
-        <p class="footer-title">Desenvolvido por Leonardo Ferreira</p>
+        <p class="footer-title">Developed by Leonardo Ferreira</p>
 
         <div class="footer-tech">
             <div class="tech-item">
@@ -1041,7 +1041,7 @@
 
 <script>
     // Configurações
-    const API_URL = 'http://localhost:8081/api/usuarios';
+    const API_URL = 'http://localhost:8080/api/usuarios';
     let usuariosCache = [];
     let editandoUsuarioId = null;
 
@@ -1061,7 +1061,7 @@
     // Testar conexão com API
     async function testarConexao() {
         try {
-            const response = await fetch(`${API_URL}/teste`);
+            const response = await fetch('http://localhost:8080/api/usuarios/teste');
             if (response.ok) {
                 apiStatus.textContent = 'Conectado';
                 apiStatus.style.color = '#10b981';
@@ -1154,7 +1154,7 @@
         tabelaBody.innerHTML = '<tr><td colspan="6"><div class="spinner"></div></td></tr>';
 
         try {
-            const response = await fetch(`${API_URL}?t=${Date.now()}`);
+            const response = await fetch('http://localhost:8080/api/usuarios?t=' + Date.now());
             if (!response.ok) throw new Error('Falha ao buscar dados');
 
             const usuarios = await response.json();
@@ -1229,22 +1229,23 @@
         }
     }
 
-    // Deletar Usuário
-    async function deletarUsuario(id) {
-        if (!confirm('Tem certeza que deseja excluir este usuário permanentemente?')) return;
+    // Deletar Usuário corrigido
+async function deletarUsuario(id) {
+    if (!confirm('Tem certeza que deseja excluir este usuário permanentemente?')) return;
 
-        try {
-            const response = await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
-            if (response.ok) {
-                mostrarMensagem('Usuário excluído com sucesso!', 'success');
-                await listarUsuarios();
-            } else {
-                mostrarMensagem('Erro ao excluir usuário', 'error');
-            }
-        } catch (error) {
-            mostrarMensagem(`Erro de conexão: ${error.message}`, 'error');
+    try {
+        const response = await fetch('http://localhost:8080/api/usuarios/' + id, { method: 'DELETE' });
+
+        if (response.ok) {
+            mostrarMensagem('Usuário excluído com sucesso!', 'success');
+            await listarUsuarios();
+        } else {
+            mostrarMensagem('Erro ao excluir usuário', 'error');
         }
+    } catch (error) {
+        mostrarMensagem(`Erro de conexão: ${error.message}`, 'error');
     }
+}
 
     // Limpar Formulário
     function limparFormulario() {
