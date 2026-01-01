@@ -10,10 +10,12 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("*")
-                .allowedMethods("*")
+                // Substituímos pelos domínios específicos para maior segurança
+                .allowedOrigins("http://localhost:3000", "https://leofe.com.br", "https://www.leofe.com.br")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
-                .allowCredentials(false)
+                // Deixe como true se pretender usar autenticação via Cookies/Sessions no futuro
+                .allowCredentials(true)
                 .maxAge(3600);
     }
 }
