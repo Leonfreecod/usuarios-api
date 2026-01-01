@@ -1,0 +1,81 @@
+### Criar usuário 1
+POST http://localhost:8081/api/usuarios
+Content-Type: application/json
+
+{
+  "nome": "Leonardo Silva",
+  "email": "leo@email.com",
+  "idade": 30
+}
+
+### Criar usuário 2
+POST http://localhost:8081/api/usuarios
+Content-Type: application/json
+
+{
+  "nome": "Maria Santos",
+  "email": "maria@email.com",
+  "idade": 25
+}
+
+### Listar todos os usuários
+GET http://localhost:8081/api/usuarios
+
+### Buscar usuário por ID (substitua {id} pelo ID real)
+GET http://localhost:8081/api/usuarios/1
+
+### Atualizar usuário
+PUT http://localhost:8081/api/usuarios/1
+Content-Type: application/json
+
+{
+  "nome": "Leonardo Silva Atualizado",
+  "email": "leonardo.novo@email.com",
+  "idade": 31
+}
+
+### Deletar usuário
+DELETE http://localhost:8081/api/usuarios/2
+
+### Teste de erro: Email duplicado
+POST http://localhost:8081/api/usuarios
+Content-Type: application/json
+
+{
+  "nome": "João Duplicado",
+  "email": "leo@email.com",
+  "idade": 40
+}
+
+### Teste de erro: Usuário não encontrado
+GET http://localhost:8081/api/usuarios/999
+
+### Teste de validação: Nome vazio
+POST http://localhost:8081/api/usuarios
+Content-Type: application/json
+
+{
+  "nome": "",
+  "email": "teste@email.com",
+  "idade": 20
+}
+
+### Teste de validação: Email inválido
+POST http://localhost:8081/api/usuarios
+Content-Type: application/json
+
+{
+  "nome": "Teste",
+  "email": "email-invalido",
+  "idade": 20
+}
+
+### Teste de validação: Idade negativa
+POST http://localhost:8081/api/usuarios
+Content-Type: application/json
+
+{
+  "nome": "Teste",
+  "email": "teste2@email.com",
+  "idade": -5
+}
