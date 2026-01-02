@@ -1,5 +1,12 @@
 # User Management API
-
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/fc24b071-b56b-48fe-9b58-fec4fb52358d" alt="Cloud Users Banner" width="100%">
+  
+  <br>
+  
+  ### ☁️ Cloud Users - Management System
+  *Sistema de gerenciamento de usuários com design Premium*
+</div>
 API RESTful de alta performance desenvolvida em **Spring Boot**, projetada para oferecer uma solução robusta de gerenciamento de usuários com persistência em banco de dados relacional e interface responsiva.
 
 ## 🛠 Tech Stack
