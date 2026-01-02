@@ -5,7 +5,7 @@
   <br>
   
   ### ☁️ Cloud Users - Management System
-  *Sistema de gerenciamento de usuários com design Premium*
+  *Sistema de gerenciamento de usuários*
 </div>
 API RESTful de alta performance desenvolvida em **Spring Boot**, projetada para oferecer uma solução robusta de gerenciamento de usuários com persistência em banco de dados relacional e interface responsiva.
 
