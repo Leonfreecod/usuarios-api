@@ -1061,7 +1061,9 @@
     // Testar conexão com API
     async function testarConexao() {
         try {
-            const response = await fetch(`${API_URL}/teste`);
+            // CORREÇÃO: Usamos a variável da nuvem e removemos o "/teste"
+            const response = await fetch(`${API_URL}`);
+
             if (response.ok) {
                 apiStatus.textContent = 'Conectado';
                 apiStatus.style.color = '#10b981';
