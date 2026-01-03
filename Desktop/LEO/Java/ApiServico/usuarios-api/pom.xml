@@ -19,6 +19,7 @@
     <description>API REST para cadastro de usuários</description>
 
     <properties>
+
         <java.version>17</java.version>
     </properties>
 

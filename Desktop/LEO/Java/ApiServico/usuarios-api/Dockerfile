@@ -1,15 +1,20 @@
-# Usa uma imagem do Java 17 leve
-FROM eclipse-temurin:17-jdk-alpine
-
-# Define o diretório de trabalho dentro do container
+# Estágio 1: Build (Usando JDK 21 para compilar)
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /app
+# Boa prática: Copiar apenas o pom.xml primeiro para baixar as dependências e usar o cache do Docker
+COPY pom.xml .
+RUN mvn dependency:go-offline
 
-# Copia o seu arquivo JAR gerado para dentro do container
-# O nome deve ser igual ao que vimos na sua pasta target
-COPY target/usuarios-api-1.0.0.jar app.jar
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-# Expõe a porta que o Spring usa
+# Estágio 2: Runtime (Imagem final leve)
+FROM eclipse-temurin:21-jre-alpine
+WORKDIR /app
+COPY --from=build /app/target/*.jar app.jar
+
+# A Render exige que a aplicação ouça na porta que ela definir
 EXPOSE 8080
 
-# Comando para rodar a aplicação
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Adicionando flags de otimização de memória para ambientes Cloud
+ENTRYPOINT ["java", "-Xmx512m", "-Dserver.port=${PORT:8080}", "-jar", "app.jar"]
