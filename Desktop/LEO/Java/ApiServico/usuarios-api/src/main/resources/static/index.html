@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,6 +46,7 @@
             color: var(--light);
             line-height: 1.6;
             overflow-x: hidden;
+            zoom: 0.75;
         }
 
         /* Background effects */
@@ -91,7 +93,7 @@
 
         /* Container */
         .app-container {
-            max-width: 1400px;
+            max-width: 1250px;
             margin: 0 auto;
             padding: 20px;
             position: relative;
@@ -719,10 +721,10 @@
             }
         }
 
-        /* Footer */
+        /* Footer Minimalista */
         .app-footer {
             text-align: center;
-            padding: 50px;
+            padding: 40px 20px;
             margin-top: 50px;
             background: var(--glass);
             backdrop-filter: blur(20px);
@@ -734,19 +736,275 @@
         .footer-title {
             font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             background: linear-gradient(135deg, var(--light) 0%, var(--primary-light) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .footer-tech {
+        .tech-showcase {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .tech-grid-minimal {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 0 auto 30px;
+        }
+
+        .tech-card-minimal {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            border-radius: var(--radius-lg);
+            padding: 25px 15px;
+            transition: var(--transition);
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+        }
+
+        .tech-card-minimal:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
+            background: rgba(15, 23, 42, 0.7);
+        }
+
+        .tech-icon-minimal {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            height: 60px;
+            display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 30px;
-            margin: 30px 0;
-            flex-wrap: wrap;
+        }
+
+        .mysql-card .tech-icon-minimal {
+            color: #4479A1;
+        }
+
+        .spring-card .tech-icon-minimal {
+            color: #6DB33F;
+        }
+
+        .js-card .tech-icon-minimal {
+            color: #F7DF1E;
+        }
+
+        .api-card .tech-icon-minimal {
+            color: var(--primary-light);
+        }
+
+        .tech-name-minimal {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--light);
+            margin-bottom: 8px;
+        }
+
+        .tech-desc-minimal {
+            color: var(--gray);
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            flex-grow: 1;
+        }
+
+        .tech-badge-minimal {
+            display: inline-block;
+            padding: 6px 15px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 50px;
+            color: var(--primary-light);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .developer-signature-minimal {
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* Assinatura Premium */
+        .developer-signature-premium {
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            padding-top: 25px;
+            position: relative;
+        }
+
+        .developer-signature-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 1px;
+            background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(99, 102, 241, 0.3) 30%,
+            rgba(99, 102, 241, 0.6) 50%,
+            rgba(99, 102, 241, 0.3) 70%,
+            transparent 100%);
+        }
+
+        .signature-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(99, 102, 241, 0.2) 50%,
+            transparent 100%);
+        }
+
+        .signature-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .signature-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-light);
+            font-size: 1rem;
+            margin-bottom: 5px;
+            transition: all 0.4s ease;
+        }
+
+        .signature-content:hover .signature-icon {
+            transform: rotate(15deg) scale(1.1);
+            background: rgba(99, 102, 241, 0.2);
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .signature-name {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            letter-spacing: 3px;
+        }
+
+        .name-gradient {
+            font-size: 1rem;
+            font-weight: 600;
+            background: linear-gradient(135deg,
+            var(--light) 0%,
+            var(--primary-light) 50%,
+            var(--light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 100%;
+            animation: shimmer 8s infinite linear;
+            position: relative;
+        }
+
+        .name-gradient:first-child::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg,
+            transparent 0%,
+            var(--primary) 50%,
+            transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .signature-content:hover .name-gradient:first-child::after {
+            opacity: 0.5;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .signature-subtitle {
+            font-size: 0.7rem;
+            color: var(--gray);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 400;
+            margin-top: 2px;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .signature-content:hover .signature-subtitle {
+            color: var(--primary-light);
+            opacity: 1;
+            letter-spacing: 2.5px;
+        }
+
+        /* Efeito de brilho no hover */
+        .signature-content::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: radial-gradient(circle at center,
+            rgba(99, 102, 241, 0.05) 0%,
+            transparent 70%);
+            opacity: 0;
+            border-radius: var(--radius-lg);
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .signature-content:hover::before {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .developer-signature-premium {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .signature-line {
+                width: 100px;
+                height: 1px;
+            }
+
+            .signature-name {
+                flex-direction: column;
+            }
+
+            .name-gradient {
+                font-size: 0.9rem;
+                letter-spacing: 2px;
+            }
         }
 
         .tech-item {
@@ -877,7 +1135,7 @@
             CLOUD USERS
         </h1>
         <p class="app-subtitle">
-            Sistema de gerenciamento de usuários em nuvem.
+            Sistema de gerenciamento de usuários em nuvem
         </p>
 
         <div class="stats-grid">
@@ -1015,31 +1273,63 @@
 
     <!-- Footer -->
     <footer class="app-footer">
-        <p class="footer-title">Developed by Leonardo Ferreira</p>
+        <p class="footer-title">Tecnologias Utilizadas</p>
 
-        <div class="footer-tech">
-            <div class="tech-item">
-                <i class="fas fa-bolt"></i>
-                <span>Spring Boot</span>
-            </div>
-            <div class="tech-item">
-                <i class="fas fa-code"></i>
-                <span>JavaScript Moderno</span>
-            </div>
-            <div class="tech-item">
-                <i class="fas fa-database"></i>
-                <span>H2 Database</span>
-            </div>
-            <div class="tech-item">
-                <i class="fas fa-server"></i>
-                <span>API REST</span>
-            </div>
-        </div>
+        <div class="tech-showcase">
+            <div class="tech-grid-minimal">
+                <!-- MySQL -->
+                <div class="tech-card-minimal mysql-card">
+                    <div class="tech-icon-minimal">
+                        <i class="devicon-mysql-plain-wordmark"></i>
+                    </div>
+                    <h3 class="tech-name-minimal">MySQL</h3>
+                    <span class="tech-badge-minimal">Database</span>
+                </div>
 
-    </footer>
-</div>
+                <!-- Spring Boot -->
+                <div class="tech-card-minimal spring-card">
+                    <div class="tech-icon-minimal">
+                        <i class="devicon-spring-plain-wordmark"></i>
+                    </div>
+                    <h3 class="tech-name-minimal">Spring Boot</h3>
+                    <span class="tech-badge-minimal">Backend</span>
+                </div>
 
-<script>
+                <!-- JavaScript -->
+                <div class="tech-card-minimal js-card">
+                    <div class="tech-icon-minimal">
+                        <i class="devicon-javascript-plain"></i>
+                    </div>
+                    <h3 class="tech-name-minimal">JavaScript</h3>
+                    <span class="tech-badge-minimal">Frontend</span>
+                </div>
+
+                <!-- API REST -->
+                <div class="tech-card-minimal api-card">
+                    <div class="tech-icon-minimal">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="tech-name-minimal">API REST</h3>
+                    <span class="tech-badge-minimal">API</span>
+                </div>
+            </div>
+
+            <!-- Assinatura Premium -->
+            <div class="developer-signature-premium">
+                <div class="signature-line"></div>
+                <div class="signature-content">
+                    <div class="signature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <p class="signature-name">
+                        <span class="name-gradient">LEONARDO FERREIRA</span>
+                        </p>
+                    <div class="signature-subtitle">Full Stack Developer</div>
+                </div>
+                <div class="signature-line"></div>
+            </div>
+
+    <script>
     // Configurações
     const API_URL = 'https://usuarios-api-2.onrender.com/api/usuarios';
     let usuariosCache = [];
